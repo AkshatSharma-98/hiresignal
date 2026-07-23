@@ -1,0 +1,76 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+  output          = "../src/generated/prisma"
+}
+
+datasource db {
+  provider   = "postgresql"
+  extensions = [vector]
+}
+
+enum SourcePlatform {
+  linkedin
+  seek
+  indeed
+  company_site
+  other
+}
+
+enum WorkArrangement {
+  remote
+  hybrid
+  onsite
+}
+
+enum EmploymentType {
+  full_time
+  part_time
+  contract
+  internship
+  casual
+}
+
+enum SeniorityLevel {
+  entry
+  associate
+  mid_senior
+  director
+  executive
+}
+
+enum SalaryPeriod {
+  yearly
+  hourly
+  monthly
+}
+
+model JobPosting {
+  id              String           @id @default(cuid())
+  title           String
+  company         String
+  description     String
+  sourcePlatform  SourcePlatform
+  sourceUrl       String
+  externalId      String?
+  location        String?
+  workArrangement WorkArrangement?
+  employmentType  EmploymentType?
+  seniorityLevel  SeniorityLevel?
+  salaryMin       Float?
+  salaryMax       Float?
+  salaryCurrency  String?
+  salaryPeriod    SalaryPeriod?
+  requirements    String[]
+  skills          String[]
+  benefits        String[]
+  applicantCount  Int?
+  postedAt        DateTime?
+  createdAt       DateTime         @default(now())
+}
+
+model JobEmbedding {
+  id     String                     @id @default(cuid())
+  jobId  String                     @unique
+  vector Unsupported("vector(768)")
+}

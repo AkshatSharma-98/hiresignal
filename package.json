@@ -1,0 +1,12 @@
+{
+  "name": "hiresignal",
+  "version": "1.0.0",
+  "description": "A tool that scrapes and aggregates job postings, extracts structured skill signals via AI, tracks hiring velocity per company, and surfaces hot companies actively scaling engineering teams. Recruiters and job seekers get an intelligence dashboard — like LinkedIn meets Crunchbase, powered by AI parsing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Akshat Sharma -- Master of Computer Science at University of Sydney",
+  "license": "ISC"
+}
